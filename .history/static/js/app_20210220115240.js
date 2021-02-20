@@ -5,32 +5,28 @@ d3.json("data/samples.json").then((importedData) => {
     // console.log(importedData.metadata);
     console.log(importedData.samples);
 
-    let otuid = importedData.samples[0].otu_ids.slice(0,10).reverse();
-    console.log(otuid)
-    let samplevalues =  importedData.samples[0].sample_values.slice(0,10).reverse();
-    console.log(samplevalues)
+    let id = importedData.samples[0].otu_ids;
+    console.log(id)
+    let sampleValues =  importedData.samples[0].sample_values.slice(0,10).reverse();
+    console.log(sampleValues)
     let hovertext =  importedData.samples[0].otu_labels.slice(0,10);
     console.log (hovertext)
-    let valuelabel = otuid.map(d => "OTU " + d);
-
 
     // Create the Trace
     let trace = {
-    x: samplevalues,
-    y: valuelabel,
-    text: hovertext,
-    type: "bar",
-    orientation: "h"
+    x: sample_values,
+    type: "bar"
     };
+    console.log(trace);
 
     // Create the data array for the plot
-    let data = [trace];
+    let info = [trace];
 
     // Define the plot layout
     let layout = {
-    title: "Top 10 OTUs",
-    xaxis: { title: "Bacteria Values" },
-    yaxis: { title: "OTUs" }
+    title: "Eye Color vs Flicker",
+    xaxis: { title: "Eye Color" },
+    yaxis: { title: "Flicker Frequency" }
     };
 
     // Plot the chart to a div tag with id "bar"

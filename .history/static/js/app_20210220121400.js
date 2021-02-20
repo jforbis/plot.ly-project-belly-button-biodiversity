@@ -11,14 +11,11 @@ d3.json("data/samples.json").then((importedData) => {
     console.log(samplevalues)
     let hovertext =  importedData.samples[0].otu_labels.slice(0,10);
     console.log (hovertext)
-    let valuelabel = otuid.map(d => "OTU " + d);
-
 
     // Create the Trace
     let trace = {
     x: samplevalues,
-    y: valuelabel,
-    text: hovertext,
+    text: id,
     type: "bar",
     orientation: "h"
     };

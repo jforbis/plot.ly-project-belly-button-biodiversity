@@ -18,7 +18,7 @@ d3.json("data/samples.json").then((importedData) => {
     let trace = {
     x: samplevalues,
     y: valuelabel,
-    text: hovertext,
+    text: otuid,
     type: "bar",
     orientation: "h"
     };
