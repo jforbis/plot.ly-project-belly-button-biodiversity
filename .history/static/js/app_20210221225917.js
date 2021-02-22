@@ -43,7 +43,8 @@ d3.json("data/samples.json").then((importedData) => {
         mode: "markers",
         marker: {
             size: samplevalues,
-            color: otuid
+            colorscale: 'jet',
+            type: 'heatmap'
         },
         text:  hovertext
     };
