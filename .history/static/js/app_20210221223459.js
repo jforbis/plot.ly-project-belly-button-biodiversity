@@ -5,22 +5,19 @@ d3.json("data/samples.json").then((importedData) => {
     // console.log(importedData.metadata);
     console.log(importedData.samples);
 
-    let otuid = importedData.samples[0].otu_ids;
+    let otuid = importedData.samples[0].otu_ids.slice(0,10).reverse();
     console.log(otuid)
-    let otuid_topten = importedData.samples[0].otu_ids.slice(0,10).reverse();
-    let samplevalues =  importedData.samples[0].sample_values;
+    let samplevalues =  importedData.samples[0].sample_values.slice(0,10).reverse();
     console.log(samplevalues)
-    let samplevalues_topten = importedData.samples[0].sample_values.slice(0,10).reverse();
-    let hovertext =  importedData.samples[0].otu_labels
+    let hovertext =  importedData.samples[0].otu_labels.slice(0,10);
     console.log (hovertext)
-    let hovertext_topten =  importedData.samples[0].otu_labels.slice(0,10);
     let valuelabel = otuid.map(d => "OTU " + d);
 
     // bar chart
     let trace = {
-    x: samplevalues_topten,
+    x: samplevalues,
     y: valuelabel,
-    text: hovertext_topten,
+    text: hovertext,
     type: "bar",
     orientation: "h"
     };
@@ -33,19 +30,19 @@ d3.json("data/samples.json").then((importedData) => {
     yaxis: { title: "OTUs" }
     };
 
+    // Plot the chart to a div tag with id "bar"
     Plotly.newPlot("bar", data, layout);
-
 
     // bubble chart
     var trace2 = {
-        x: otuid,
-        y: samplevalues,
+        x: importedData.samples[0].otu_ids,
+        y: importedData.samples[0].sample_values,
         mode: "markers",
         marker: {
-            size: samplevalues,
-            color: otuid
+            size: importedData.samples[0].sample_values,
+            color: importedData.samples[0].otu_ids
         },
-        text:  hovertext
+        text:  importedData.samples[0].otu_labels
     };
 
     let layout2 = {

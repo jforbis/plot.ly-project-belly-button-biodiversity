@@ -8,7 +8,7 @@ d3.json("data/samples.json").then((importedData) => {
     let otuid = importedData.samples[0].otu_ids;
     console.log(otuid)
     let otuid_topten = importedData.samples[0].otu_ids.slice(0,10).reverse();
-    let samplevalues =  importedData.samples[0].sample_values;
+    let samplevalues =  importedData.samples[0].sample_values.slice(0,10).reverse();
     console.log(samplevalues)
     let samplevalues_topten = importedData.samples[0].sample_values.slice(0,10).reverse();
     let hovertext =  importedData.samples[0].otu_labels
@@ -38,12 +38,12 @@ d3.json("data/samples.json").then((importedData) => {
 
     // bubble chart
     var trace2 = {
-        x: otuid,
-        y: samplevalues,
+        x: importedData.samples[0].otu_ids,
+        y: importedData.samples[0].sample_values,
         mode: "markers",
         marker: {
-            size: samplevalues,
-            color: otuid
+            size: importedData.samples[0].sample_values,
+            color: importedData.samples[0].otu_ids
         },
         text:  hovertext
     };

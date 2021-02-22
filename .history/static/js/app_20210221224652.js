@@ -39,11 +39,11 @@ d3.json("data/samples.json").then((importedData) => {
     // bubble chart
     var trace2 = {
         x: otuid,
-        y: samplevalues,
+        y: importedData.samples[0].sample_values,
         mode: "markers",
         marker: {
-            size: samplevalues,
-            color: otuid
+            size: importedData.samples[0].sample_values,
+            color: importedData.samples[0].otu_ids
         },
         text:  hovertext
     };
