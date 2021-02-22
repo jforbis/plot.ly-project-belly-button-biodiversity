@@ -34,15 +34,15 @@ d3.json("data/samples.json").then((importedData) => {
     Plotly.newPlot("bar", data, layout);
 
     // bubble chart
-    var trace2 = {
-        x: importedData.samples[0].otu_ids,
-        y: importedData.samples[0].sample_values,
+    var trace1 = {
+        x: sampledata.samples[0].otu_ids,
+        y: sampledata.samples[0].sample_values,
         mode: "markers",
         marker: {
-            size: importedData.samples[0].sample_values,
-            color: importedData.samples[0].otu_ids
+            size: sampledata.samples[0].sample_values,
+            color: sampledata.samples[0].otu_ids
         },
-        text:  importedData.samples[0].otu_labels
+        text:  sampledata.samples[0].otu_labels
     }
 })
 
