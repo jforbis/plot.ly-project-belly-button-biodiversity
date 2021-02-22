@@ -36,6 +36,3 @@ d3.json("data/samples.json").then((importedData) => {
     // Plot the chart to a div tag with id "bar"
     Plotly.newPlot("bar", data, layout);
 })
-
-​
-​

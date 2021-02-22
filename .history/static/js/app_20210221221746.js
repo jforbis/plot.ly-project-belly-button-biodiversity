@@ -37,5 +37,13 @@ d3.json("data/samples.json").then((importedData) => {
     Plotly.newPlot("bar", data, layout);
 })
 
-​
+let select = document.getElementById("#selDataset"); 
+
+for(let i = 0; i < otuid.length; i++) {
+    let opt = otuid[i];
+    let el = document.createElement("option");
+    el.textContent = opt;
+    el.value = opt;
+    select.appendChild(el);
+}​
 ​
