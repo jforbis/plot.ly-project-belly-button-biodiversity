@@ -43,13 +43,15 @@ d3.json("data/samples.json").then((importedData) => {
         mode: "markers",
         marker: {
             size: samplevalues,
-            color: otuid,
+            color: otuid
         },
         text:  hovertext
     };
 
     let layout2 = {
         xaxis:{title: "OTU ID"},
+        // height: 500,
+        // width: 1000
     };
 
     let data2 = [trace2];

@@ -43,7 +43,7 @@ d3.json("data/samples.json").then((importedData) => {
         mode: "markers",
         marker: {
             size: samplevalues,
-            color: otuid,
+            colorscale: "Picnic"
         },
         text:  hovertext
     };
