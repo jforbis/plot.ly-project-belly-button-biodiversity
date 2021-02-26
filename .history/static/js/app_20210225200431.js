@@ -79,7 +79,7 @@ function subjectData(subject) {
 subjectData();
 
 // drop down for filtering
-function showData() {
+funciton showData() {
     let selDropdown = d3.select("#selDataset");
 
     d3.json("data/samples.json").then((importedData) => {
@@ -90,9 +90,3 @@ function showData() {
 }
 
 showData();
-
-// what to do when you change the drop-down list
-function changeDropdown(subject) {
-    plotData(subject);
-    subjectData(subject);
-}

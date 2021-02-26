@@ -71,7 +71,7 @@ function subjectData(subject) {
         let subjectInfo = d3.select("#sample-metadata");
         subjectInfo.html("");
         Object.entries(filteredMeta).forEach((key) => {
-            subjectInfo.append("div").text(key[0] + ": " + key[1]);
+            subjectInfo.append("p").text(key[0] + ": " + key[1]);
         });
     });
 }
@@ -79,20 +79,13 @@ function subjectData(subject) {
 subjectData();
 
 // drop down for filtering
-function showData() {
-    let selDropdown = d3.select("#selDataset");
+// funciton init() {
+//     let selDropdown = d3.select("#selDataset");
+//     d3.json("data/samples.json").then((importedData) => {
+//         importedData.names.foreach(function(id) {
+//             selDropdown.append("option").text(id).property("value");
+//         });
+//     });
+// }
 
-    d3.json("data/samples.json").then((importedData) => {
-        importedData.names.forEach(function(importedData) {
-            selDropdown.append("option").text(importedData).property("value");
-        });
-    });
-}
-
-showData();
-
-// what to do when you change the drop-down list
-function changeDropdown(subject) {
-    plotData(subject);
-    subjectData(subject);
-}
+// init();

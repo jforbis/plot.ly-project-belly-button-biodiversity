@@ -90,9 +90,3 @@ function showData() {
 }
 
 showData();
-
-// what to do when you change the drop-down list
-function changeDropdown(subject) {
-    plotData(subject);
-    subjectData(subject);
-}

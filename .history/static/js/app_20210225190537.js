@@ -78,21 +78,14 @@ function subjectData(subject) {
 
 subjectData();
 
-// drop down for filtering
-function showData() {
+drop down for filtering
+funciton init() {
     let selDropdown = d3.select("#selDataset");
-
     d3.json("data/samples.json").then((importedData) => {
-        importedData.names.forEach(function(importedData) {
-            selDropdown.append("option").text(importedData).property("value");
+        importedData.names.foreach(function(id) {
+            selDropdown.append("option").text(id).property("value");
         });
     });
 }
 
-showData();
-
-// what to do when you change the drop-down list
-function changeDropdown(subject) {
-    plotData(subject);
-    subjectData(subject);
-}
+init();
