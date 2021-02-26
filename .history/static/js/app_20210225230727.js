@@ -4,7 +4,7 @@ function plotData(subject) {
     // console.log(importedData);
     // console.log(importedData.names);
     // console.log(importedData.metadata);
-    // console.log(importedData.samples);
+    console.log(importedData.samples);
 
     let otuid = importedData.samples[0].otu_ids;
     // console.log(otuid)

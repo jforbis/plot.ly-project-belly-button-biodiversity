@@ -4,7 +4,7 @@ function plotData(subject) {
     // console.log(importedData);
     // console.log(importedData.names);
     // console.log(importedData.metadata);
-    // console.log(importedData.samples);
+    console.log(importedData.samples);
 
     let otuid = importedData.samples[0].otu_ids;
     // console.log(otuid)
@@ -56,6 +56,7 @@ function plotData(subject) {
     let data2 = [trace2];
 
     Plotly.newPlot("bubble", data2, layout2); 
+    });
 
     // data to display per subject
     let meta = importedData.metadata;
@@ -67,7 +68,6 @@ function plotData(subject) {
     Object.entries(filteredMeta).forEach((key,value) => {
         subjectInfo.append("div").text(key[0] + ": " + key[1]);
     });
-})
 }
 
 plotData();
@@ -77,22 +77,19 @@ plotData();
 // what to do when you change the drop-down list
 function optionChanged(subject) {
     plotData(subject);
+    subjectData(subject);
 }
 
 // original page load
 function showData() {
+    let selDropdown = d3.select("#selDataset");
 
     d3.json("data/samples.json").then((importedData) => {
-        let selDropdown = d3.select("#selDataset");
-
-        importedData.names.forEach((value) => {
-            let option = selDropdown.append("option");
-            option.text(value).property("value", value);
-        })
-        // importedData.names.forEach(function(name) {
-        //     selDropdown.append("option").text(name).property("value");
-        // });
-        // plotData();
+        importedData.names.forEach(function(name) {
+            selDropdown.append("option").text(name).property("value");
+        });
+        plotData();
+        subjectData();
     });
 }
 

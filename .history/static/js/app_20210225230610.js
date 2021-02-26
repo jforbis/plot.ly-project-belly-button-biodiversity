@@ -4,7 +4,7 @@ function plotData(subject) {
     // console.log(importedData);
     // console.log(importedData.names);
     // console.log(importedData.metadata);
-    // console.log(importedData.samples);
+    console.log(importedData.samples);
 
     let otuid = importedData.samples[0].otu_ids;
     // console.log(otuid)
@@ -81,11 +81,10 @@ function optionChanged(subject) {
 
 // original page load
 function showData() {
+    let selDropdown = d3.select("#selDataset");
 
     d3.json("data/samples.json").then((importedData) => {
-        let selDropdown = d3.select("#selDataset");
-
-        importedData.names.forEach((value) => {
+        importedData.forEachnames.forEach((value) => {
             let option = selDropdown.append("option");
             option.text(value).property("value", value);
         })
