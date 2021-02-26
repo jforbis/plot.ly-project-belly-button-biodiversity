@@ -80,17 +80,17 @@ function optionChanged(subject) {
 }
 
 // original page load
-function showData(subject) {
+function showData() {
 
     d3.json("data/samples.json").then((importedData) => {
-        let selDropdown = d3.select("#selDataset");
+        let selDropdown = d3.select("#selDataset")
 
-        importedData.names.forEach((value) => {
-            let option = selDropdown.append("option");
-            option.text(value).property("value", value);
-        });
-        // importedData.names.forEach(function(name) {
-        //     selDropdown.append("option").text(name).property("value");
+        importedData.names.forEach((name) => {
+            // let option = selDropdown.append("option");
+            // option.text(value).property("value", value);
+        // })
+        importedData.names.forEach(function(name) {
+            selDropdown.append("option").text(name).property("value");
         // });
         // plotData();
     });

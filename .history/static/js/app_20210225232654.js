@@ -6,6 +6,17 @@ function plotData(subject) {
     // console.log(importedData.metadata);
     // console.log(importedData.samples);
 
+    // data to display per subject
+    let meta = importedData.metadata;
+    // console.log(meta);
+    let filteredMeta = meta.filter(obj => obj.id == subject)[0];
+    console.log(filteredMeta);
+    let subjectInfo = d3.select("#sample-metadata");
+    subjectInfo.html("");
+    Object.entries(filteredMeta).forEach((key,value) => {
+        subjectInfo.append("div").text(key[0] + ": " + key[1]);
+    });
+
     let otuid = importedData.samples[0].otu_ids;
     // console.log(otuid)
     let otuid_topten = importedData.samples[0].otu_ids.slice(0,10).reverse();
@@ -56,17 +67,6 @@ function plotData(subject) {
     let data2 = [trace2];
 
     Plotly.newPlot("bubble", data2, layout2); 
-
-    // data to display per subject
-    let meta = importedData.metadata;
-    // console.log(meta);
-    let filteredMeta = meta.filter(obj => obj.id == subject)[0];
-    console.log(filteredMeta);
-    let subjectInfo = d3.select("#sample-metadata");
-    subjectInfo.html("");
-    Object.entries(filteredMeta).forEach((key,value) => {
-        subjectInfo.append("div").text(key[0] + ": " + key[1]);
-    });
 })
 }
 
@@ -80,7 +80,7 @@ function optionChanged(subject) {
 }
 
 // original page load
-function showData(subject) {
+function showData() {
 
     d3.json("data/samples.json").then((importedData) => {
         let selDropdown = d3.select("#selDataset");

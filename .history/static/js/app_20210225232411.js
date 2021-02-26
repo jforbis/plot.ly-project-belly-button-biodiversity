@@ -80,7 +80,7 @@ function optionChanged(subject) {
 }
 
 // original page load
-function showData(subject) {
+function showData() {
 
     d3.json("data/samples.json").then((importedData) => {
         let selDropdown = d3.select("#selDataset");

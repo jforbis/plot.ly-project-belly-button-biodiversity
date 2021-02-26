@@ -64,9 +64,9 @@ function plotData(subject) {
     console.log(filteredMeta);
     let subjectInfo = d3.select("#sample-metadata");
     subjectInfo.html("");
-    Object.entries(filteredMeta).forEach((key,value) => {
-        subjectInfo.append("div").text(key[0] + ": " + key[1]);
-    });
+    Object.entries(filteredMeta).forEach(function (key) {
+            subjectInfo.append("div").text(key[0] + ": " + key[1]);
+        });
 })
 }
 
@@ -80,19 +80,18 @@ function optionChanged(subject) {
 }
 
 // original page load
-function showData(subject) {
+function showData() {
 
     d3.json("data/samples.json").then((importedData) => {
-        let selDropdown = d3.select("#selDataset");
+        let selDropdown = d3.select("#selDataset")
 
-        importedData.names.forEach((value) => {
+        importedData.names.forEach((name) => {
             let option = selDropdown.append("option");
             option.text(value).property("value", value);
-        });
+        })
         // importedData.names.forEach(function(name) {
         //     selDropdown.append("option").text(name).property("value");
         // });
-        // plotData();
     });
 }
 

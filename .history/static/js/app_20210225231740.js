@@ -80,7 +80,7 @@ function optionChanged(subject) {
 }
 
 // original page load
-function showData(subject) {
+function showData() {
 
     d3.json("data/samples.json").then((importedData) => {
         let selDropdown = d3.select("#selDataset");
@@ -88,7 +88,7 @@ function showData(subject) {
         importedData.names.forEach((value) => {
             let option = selDropdown.append("option");
             option.text(value).property("value", value);
-        });
+        })
         // importedData.names.forEach(function(name) {
         //     selDropdown.append("option").text(name).property("value");
         // });
