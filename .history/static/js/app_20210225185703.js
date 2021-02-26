@@ -62,11 +62,10 @@ function plotData() {
 plotData();
 
 // data to display per subject
-function subjectData(subject) {
+function subjectData() {
     d3.json("data/samples.json").then((importedData) => {
         let meta = importedData.metadata;
-        // console.log(meta);
-        let filteredMeta = meta.filter(data => data.subject === subject)[0];
+        let filteredMeta = meta.filter(data => data.id.toString() === data)[0];
         console.log(filteredMeta);
         let subjectInfo = d3.select("#sample-metadata");
         subjectInfo.html("");

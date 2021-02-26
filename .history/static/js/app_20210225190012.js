@@ -66,7 +66,7 @@ function subjectData(subject) {
     d3.json("data/samples.json").then((importedData) => {
         let meta = importedData.metadata;
         // console.log(meta);
-        let filteredMeta = meta.filter(data => data.subject === subject)[0];
+        let filteredMeta = meta.filter(data => data.subject.toString() === subject)[0];
         console.log(filteredMeta);
         let subjectInfo = d3.select("#sample-metadata");
         subjectInfo.html("");
