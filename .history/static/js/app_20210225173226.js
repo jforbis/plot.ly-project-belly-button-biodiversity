@@ -1,6 +1,5 @@
 // reading in my data
-function plotData(subject) {
-    d3.json("data/samples.json").then((importedData) => {
+d3.json("data/samples.json").then((importedData) => {
     // console.log(importedData);
     // console.log(importedData.names);
     // console.log(importedData.metadata);
@@ -56,34 +55,12 @@ function plotData(subject) {
     let data2 = [trace2];
 
     Plotly.newPlot("bubble", data2, layout2); 
-    });
-}
-
-plotData();
-
-// data to display per subject
-function subjectInfo() {
-    d3.json("data/samples.json").then((importedData) => {
-        let meta = importedData.metadata;
-        let filteredMeta = meta.filter(data => data.id.toString() === data)[0];
-        let subjectInfo = d3.select("#sample-metadata");
-        subjectInfo.html("");
-        Object.entries(filteredMeta).forEach((key) => {
-            subjectInfo.append("h5").text(key[0] + ": " + key[1]);
-        });
-    });
-}
-
-subjectInfo();
+});
 
 // drop down for filtering
-// funciton init() {
-//     let selDropdown = d3.select("#selDataset");
-//     d3.json("data/samples.json").then((importedData) => {
-//         importedData.names.foreach(function(id) {
-//             selDropdown.append("option").text(id).property("value");
-//         });
-//     });
+// function filterSubject(otuid) {
+    // d3.json("data/samples.json").then((importedData) => {
+    let meta = importedData.metadata;
+    console.log(meta)
+    // });
 // }
-
-// init();

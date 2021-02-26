@@ -1,19 +1,18 @@
 // reading in my data
-function plotData(subject) {
-    d3.json("data/samples.json").then((importedData) => {
+d3.json("data/samples.json").then((importedData) => {
     // console.log(importedData);
     // console.log(importedData.names);
     // console.log(importedData.metadata);
     console.log(importedData.samples);
 
     let otuid = importedData.samples[0].otu_ids;
-    // console.log(otuid)
+    console.log(otuid)
     let otuid_topten = importedData.samples[0].otu_ids.slice(0,10).reverse();
     let samplevalues =  importedData.samples[0].sample_values;
-    // console.log(samplevalues)
+    console.log(samplevalues)
     let samplevalues_topten = importedData.samples[0].sample_values.slice(0,10).reverse();
     let hovertext =  importedData.samples[0].otu_labels
-    // console.log (hovertext)
+    console.log (hovertext)
     let hovertext_topten =  importedData.samples[0].otu_labels.slice(0,10);
     let valuelabel = otuid.map(d => "OTU " + d);
 
@@ -56,34 +55,12 @@ function plotData(subject) {
     let data2 = [trace2];
 
     Plotly.newPlot("bubble", data2, layout2); 
-    });
-}
-
-plotData();
-
-// data to display per subject
-function subjectInfo() {
-    d3.json("data/samples.json").then((importedData) => {
-        let meta = importedData.metadata;
-        let filteredMeta = meta.filter(data => data.id.toString() === data)[0];
-        let subjectInfo = d3.select("#sample-metadata");
-        subjectInfo.html("");
-        Object.entries(filteredMeta).forEach((key) => {
-            subjectInfo.append("h5").text(key[0] + ": " + key[1]);
-        });
-    });
-}
-
-subjectInfo();
+});
 
 // drop down for filtering
-// funciton init() {
-//     let selDropdown = d3.select("#selDataset");
-//     d3.json("data/samples.json").then((importedData) => {
-//         importedData.names.foreach(function(id) {
-//             selDropdown.append("option").text(id).property("value");
-//         });
-//     });
-// }
-
-// init();
+function filterSubject(otuid) {
+    d3.json("data/samples.json").then((importedData) => {
+    let meta = importedData.metadata;
+    console.log(meta)
+    });
+}

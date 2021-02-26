@@ -65,11 +65,11 @@ plotData();
 function subjectInfo() {
     d3.json("data/samples.json").then((importedData) => {
         let meta = importedData.metadata;
-        let filteredMeta = meta.filter(data => data.id.toString() === data)[0];
+        let filteredMeta = metadata.filter(data => data.id.toString() === data)[0];
         let subjectInfo = d3.select("#sample-metadata");
         subjectInfo.html("");
         Object.entries(filteredMeta).forEach((key) => {
-            subjectInfo.append("h5").text(key[0] + ": " + key[1]);
+            subjectInfo.append("h3").text(key[0] + ": " + key[1]);
         });
     });
 }
