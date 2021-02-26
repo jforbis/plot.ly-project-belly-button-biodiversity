@@ -89,10 +89,6 @@ function showData(subject) {
             let option = selDropdown.append("option");
             option.text(value).property("value", value);
         });
-        // importedData.names.forEach(function(name) {
-        //     selDropdown.append("option").text(name).property("value");
-        // });
-        // plotData();
     });
 }
 
