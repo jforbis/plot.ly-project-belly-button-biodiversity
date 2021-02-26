@@ -71,7 +71,7 @@ function subjectData(subject) {
         let subjectInfo = d3.select("#sample-metadata");
         subjectInfo.html("");
         Object.entries(filteredMeta).forEach((key,value) => {
-            subjectInfo.append("div").text(key[0] + ": " + key[1]);
+            subjectInfo.append("div").text(key[0] + ": " + key[1] + "\n");
         });
     });
 }

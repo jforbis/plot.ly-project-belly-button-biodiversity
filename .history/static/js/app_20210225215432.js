@@ -62,16 +62,16 @@ function plotData() {
 plotData();
 
 // data to display per subject
-function subjectData(subject) {
+function subjectData(id) {
     d3.json("data/samples.json").then((importedData) => {
         let meta = importedData.metadata;
         // console.log(meta);
-        let filteredMeta = meta.filter(meta => meta.subject === subject)[0];
+        let filteredMeta = meta.filter(obj => obj.id === id)[0];
         console.log(filteredMeta);
         let subjectInfo = d3.select("#sample-metadata");
         subjectInfo.html("");
         Object.entries(filteredMeta).forEach((key,value) => {
-            subjectInfo.append("div").text(key[0] + ": " + key[1]);
+            subjectInfo.append("div").text(key + ": " + value);
         });
     });
 }
@@ -86,8 +86,8 @@ function showData() {
         importedData.names.forEach(function(importedData) {
             selDropdown.append("option").text(importedData).property("value");
         });
-        // plotData(importedData.names[0]);
-        // subjectData(importedData.names[0]);
+        plotData(importedData.names[0]);
+        subjectData(importedData.names[0]);
     });
 }
 

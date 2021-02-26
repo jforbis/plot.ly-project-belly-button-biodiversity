@@ -71,7 +71,7 @@ function subjectData(subject) {
         let subjectInfo = d3.select("#sample-metadata");
         subjectInfo.html("");
         Object.entries(filteredMeta).forEach((key,value) => {
-            subjectInfo.append("div").text(key[0] + ": " + key[1]);
+            subjectInfo.append("div").text(key + ": " + value);
         });
     });
 }
@@ -86,8 +86,8 @@ function showData() {
         importedData.names.forEach(function(importedData) {
             selDropdown.append("option").text(importedData).property("value");
         });
-        // plotData(importedData.names[0]);
-        // subjectData(importedData.names[0]);
+        plotData(importedData.names[0]);
+        subjectData(importedData.names[0]);
     });
 }
 
